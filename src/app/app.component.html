@@ -1,0 +1,56 @@
+<router-outlet></router-outlet>
+
+<ul>
+	<li ><img src="assets/logo.svg"> Intugine</li>	
+	<li style="float:right"><a >Transporters</a></li>
+	<li style="float:right"><a >Brands</a></li>
+	<li style="float:right"><a class="active">Home</a></li>
+</ul>
+<div class="row setright">
+	<div class="div1 active1"><span>DEL</span><br><br><span style="font-size: xx-large; margin-left: 24px;">{{DEL}}</span></div>
+	<div class="div1"><span>INT</span><br><br><span style="font-size: xx-large; margin-left: 24px;">{{INT}}</span></div>
+	<div class="div1"><span>OOD</span><br><br><span style="font-size: xx-large; margin-left: 24px;">{{OOD}}</span></div>
+	<div class="div1"><span>DEX</span><br><br><span style="font-size: xx-large; margin-left: 24px;">{{DEX}}</span></div>
+	<div class="div1"><span>NFI</span><br><br><span style="font-size: xx-large; margin-left: 24px;">{{NFI}}</span></div>
+
+</div>
+<div class="col-md-12 row">
+	<div class="col-md-5">
+		<div class="newbx">
+			<div  class="newcls">
+				<p *ngFor = "let scn of getScanData"> <span class="txtctr"> {{scn.location}}</span> <span style="float: right;"> {{scn.time | date:'short'}}</span> </p>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-7">
+		<table  class="table" width = "100%">
+			<thead>
+
+				<tr style="color:white;color:grey">
+					<th>AWB NUMBER</th>
+					<th>TRANSPORTER</th>
+					<th>SOURCE</th>
+					<th>DESTINATION</th>
+					<th>BRAND</th>
+					<th>START DATE</th>
+					<th>ETD</th>
+					<th>STATUS</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr *ngFor="let list of myArray" (click) = "getData(list)" class="ptr">
+					<td>{{list.awbno}}</td>
+					<td>{{list.carrier}}</td>
+					<td>{{list.from}}</td>
+					<td>{{list.to}}</td>
+					<td>{{list.carrier}}</td>
+					<td>{{list.pickup_date | date:'shortDate'}}</td>
+					<td>{{list.extra_fields?.expected_delivery_date | date:'shortDate'}}</td>
+					<td class="clrgrn">{{list.current_status}}</td>
+	
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
